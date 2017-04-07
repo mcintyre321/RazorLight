@@ -4,17 +4,39 @@ namespace RazorLight.Tests
 {
 	public class RazorLightEngineTest
 	{
-		[Fact]
-		public void Can_Parse_Embeded_Resource()
-		{
-			var engine = EngineFactory.CreateEmbedded(typeof(TestViewModel));
+	    [Fact]
+	    public void Can_Parse_Embeded_Resource()
+	    {
+	        var engine = EngineFactory.CreateEmbedded(typeof(TestViewModel));
 
-			string result = engine.Parse("Views.Test", new TestViewModel());
+	        string result = engine.Parse("Views.Test", new TestViewModel());
 
-			Assert.NotNull(result);
-		}
+	        Assert.NotNull(result);
+	    }
 
-		[Fact]
+	    [Fact]
+	    public void Can_Parse_Embeded_Resource_With_DataAnnotations()
+	    {
+	        var engine = EngineFactory.CreateEmbedded(typeof(TestViewModel));
+
+	        string result = engine.Parse("Views.TestWithDataAnnotations", new TestViewModel());
+
+	        Assert.NotNull(result);
+	    }
+
+	    [Fact]
+	    public void Can_Parse_Embeded_Resource_UsingDataAnnotations()
+	    {
+	        var engine = EngineFactory.CreateEmbedded(typeof(TestViewModel));
+
+	        string result = engine.Parse("Views.TestWithUsingDataAnnotations", new TestViewModel());
+
+	        Assert.NotNull(result);
+	    }
+
+
+
+        [Fact]
 		public void Can_Parse_Physical_Files()
 		{
 			string root = PathUtility.GetViewsPath();

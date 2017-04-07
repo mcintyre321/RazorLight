@@ -1,0 +1,7 @@
+﻿@using System.Linq
+@using RazorLight.Tests
+@model RazorLight.Tests.TestViewModel
+@{
+    var displayName = typeof(TestViewModel).CustomAttributes.OfType<System.ComponentModel.DataAnnotations.DisplayAttribute>().Single().Name;
+}
+<div>Text @Model.Title</div>
